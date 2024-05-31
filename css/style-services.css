@@ -1,0 +1,243 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Evita el desplazamiento horizontal */
+  }
+  
+  header {
+    background-color: #0a0433;
+    color: #fff;
+    padding: 1em 0;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1em;
+    position: relative; /* Añadido para dispositivos móviles */
+  }
+  
+  nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  nav ul li {
+    margin: 0 15px;
+  }
+  
+  nav ul li :hover {
+    color: #0b0c0c;
+    background-color: white;
+    border-radius: 3px;
+  }
+  
+  nav ul li a {
+    transition: color 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    padding: 0.5em 1em;
+  }
+  
+  nav ul li a:hover {
+    color: #0b0c0c;
+    background-color: white;
+    border-radius: 3px;
+  }
+  
+  /* Menu icon */
+  .menu-icon {
+    display: none;
+    font-size: 2em;
+    cursor: pointer;
+  }
+  
+  /* Estilo para ajustar el tamaño del logo */
+  nav .logo img {
+    width: 150px; /* Establece el ancho del logo */
+    height: auto; /* Altura automática para mantener la proporción */
+  }
+  
+  /* Estilos para PC escritorio */
+  @media (min-width: 1024px) {
+    nav ul {
+      /* Elimina display: flex; */
+      justify-content: flex-start;
+    }
+  
+    .image-container {
+      width: 100vw; /* 100% del ancho del viewport */
+      height: 240px; /* Altura deseada para recortar la vista de la imagen */
+      overflow: hidden; /* Oculta el desbordamiento de la imagen */
+      margin-bottom: 0; /* Elimina el margen inferior */
+    }
+  
+    .card {
+      flex-direction: row; /* Alinear elementos en fila */
+    }
+  
+    .card img {
+      max-width: 500px; /* Reducir el ancho máximo de la imagen */
+      border-radius: 10px;
+      padding: 3px;
+    }
+  
+    .responsive-img {
+      width: 100%; /* La imagen ocupa todo el ancho del contenedor */
+      height: auto; /* Altura automática para mantener la proporción de la imagen */
+    }
+  
+    .main-container {
+      padding-top: 10px; /* Ajusta el padding superior según sea necesario */
+    }
+    
+  }
+  
+  /* Estilos para tablets */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    nav ul {
+      display: block;
+      text-align: center;
+    }
+    nav .logo img {
+      width: 150px; /* Establece el ancho del logo */
+      height: auto; /* Altura automática para mantener la proporción */
+    }
+  }
+  
+  /* Estilos para dispositivos móviles */
+  @media (max-width: 767px) {
+    .menu-icon {
+      display: block;
+      font-size: 2em;
+      cursor: pointer;
+      order: 1; /* Cambiar el orden del ícono del menú */
+      margin-left: auto; /* Empujar el ícono del menú al lado derecho */
+    }
+  
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background-color: #0a0433;
+        overflow: hidden;
+        transform: translateX(100%); /* Inicio fuera de la pantalla a la derecha */
+        transition: transform 0.5s ease; /* Transición de transformación */
+        position: absolute; /* Añadido */
+        top: 60px; /* Ajustar según la altura del nav */
+        left: 0;
+        margin-top: 0; /* Ajusta el margen superior */
+        z-index: 1; /* Asegura que el menú esté superpuesto a la imagen */
+      }
+    nav ul li {
+      text-align: center;
+      margin: 1em 0;
+    }
+  
+    nav ul.show {
+      transform: translateY(0); /* Desplazar hacia abajo */
+    }
+  
+    .main-container {
+      padding-top: 10px; /* Ajusta el padding superior del contenido principal */
+    }
+  
+    .image-container {
+      width: 100vw; /* 100% del ancho del viewport */
+      height: 150px; /* Altura deseada para recortar la vista de la imagen */
+      overflow: hidden; /* Oculta el desbordamiento de la imagen */
+      margin-bottom: 0; /* Elimina el margen inferior */
+    }
+  
+    .responsive-img {
+      width: 100%; /* La imagen ocupa todo el ancho del contenedor */
+      height: auto; /* Altura automática para mantener la proporción de la imagen */
+    }
+  
+    .title-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  
+    .image-container .title {
+      font-size: 2.5em;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      color: white;
+    }
+  
+    .card {
+      flex-direction: column; /* Alinear elementos en columna */
+    }
+  
+    .card img {
+      max-width: 100%; /* La imagen ocupará todo el ancho del contenedor */
+      height: auto; /* Altura automática para mantener la proporción */
+      border-radius: 10px;
+    }
+
+  }
+  
+  footer {
+    background-color: #0a0433;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* form label {
+      margin-top: 1em;
+  } */
+  
+  main {
+    background-image: url('/images/index/fondo_gris.jpg');
+    background-size: cover; /* Ajusta la imagen para cubrir todo el área del contenedor */
+    background-position: center; /* Centra la imagen horizontal y verticalmente */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    /* Otros estilos que quieras aplicar al main */
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.9); /* Color de fondo con opacidad */
+    border: 1px solid #ddd; /* Borde de la tarjeta */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-bottom: 20px; /* Espacio entre las tarjetas */
+    height: 100%; /* Altura del contenedor igual al 100% */
+
+}
+
+.card:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Efecto de sombra al pasar el cursor */
+}
+
+
+        /* Estilo para reducir y centrar la imagen en la parte superior de la tarjeta */
+        .card-img-top {
+            object-fit: contain;
+            max-height:90px; /* Altura máxima deseada de la imagen */
+            margin: auto; /* Centra la imagen horizontalmente */
+            display: block; /* Asegura que la imagen esté centrada */
+        }
+        /* Estilo para centrar el contenido dentro de la tarjeta */
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%; /* Asegura que la tarjeta tenga el mismo tamaño que su contenido */
+        }
+
+      
