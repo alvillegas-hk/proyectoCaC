@@ -201,9 +201,40 @@ body {
   } */
   
   main {
-    background-image: url('/images/index/fondo_gris.jpg');
+    background-image: url('/images/about/background.jpg');
     background-size: cover; /* Ajusta la imagen para cubrir todo el área del contenedor */
     background-position: center; /* Centra la imagen horizontal y verticalmente */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
     /* Otros estilos que quieras aplicar al main */
 }
+
+
+.card {
+    background-color: rgba(255, 255, 255, 0.9); /* Color de fondo con opacidad */
+    border: 1px solid #ddd; /* Borde de la tarjeta */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-bottom: 20px; /* Espacio entre las tarjetas */
+    height: 100%; /* Altura del contenedor igual al 100% */
+
+}
+
+.card:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Efecto de sombra al pasar el cursor */
+}
+
+
+        /* Estilo para reducir y centrar la imagen en la parte superior de la tarjeta */
+        .card-img-top {
+            object-fit: contain;
+            max-height:300px; /* Altura máxima deseada de la imagen */
+            margin: auto; /* Centra la imagen horizontalmente */
+            display: block; /* Asegura que la imagen esté centrada */
+        }
+        /* Estilo para centrar el contenido dentro de la tarjeta */
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%; /* Asegura que la tarjeta tenga el mismo tamaño que su contenido */
+        }
