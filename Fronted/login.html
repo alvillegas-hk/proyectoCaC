@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Av | Contacto</title>
+    <link rel="stylesheet" href="css/style-login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <link rel="icon" href="favicon.png" type="image/png">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <picture>
+                        <img src="images/Ainvertir-logo.png" alt="Logo de la empresa">
+                    </picture>
+                </a>
+            </div>
+            <div class="menu-icon" id="menu-icon">
+                &#9776;
+            </div>
+            <ul id="nav-list">
+                <li><a href="about.html">¿Quiénes somos?</a></li>
+                <li><a href="services.html">¿Qué ofrecemos?</a></li>
+                <li><a href="contact.html">Contacto</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container">
+        <section>
+            <div class="card mt-1">
+                <div class="card-content">
+                    <form id="contactForm">
+                        <div class="field">
+                            <label class="label">Usuario</label>
+                            <div class="control">
+                                <input type="text" id="username" name="username" class="input" required>
+                                <span class="error-message" id="username-error"><i class="fas fa-exclamation-circle"></i> Este campo es obligatorio.</span>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Contraseña</label>
+                            <div class="control">
+                                <input type="password" id="password" name="password" class="input" required>
+                                <span class="error-message" id="password-error"><i class="fas fa-exclamation-circle"></i> Este campo es obligatorio.</span>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <button type="submit" class="button is-primary">Enviar</button>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <a href="#" >¿Olvidaste tu contraseña?</a>
+                                <br>
+                                <a href="#" >Registrarse</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Todos los derechos reservados Alfredo Villegas - Comision 24123</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>
