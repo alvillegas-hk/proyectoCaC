@@ -1,20 +1,29 @@
-const obtenerRespuesta = async () => {
+const enviarCredenciales = async (username, password) => {
     try {
-        const respuesta = await axios.get('http://localhost:8750/');
+        const respuesta = await axios.post('http://localhost:8750/auth', {
+            username: username,
+            password: password
+        });
+
         console.log(respuesta.data); // Mostrar la respuesta en la consola para verificar
 
-        // Suponiendo que `respuesta.data.token` es el token que deseas almacenar
-        const token = respuesta.data.token;
+        // Suponiendo que `respuesta.data.accessToken` y `respuesta.data.refreshToken` son los tokens que deseas almacenar
+        const accessToken = respuesta.data.accessToken;
+        const refreshToken = respuesta.data.refreshToken;
 
-        // Guardar el token en el localStorage
-        localStorage.setItem('token', token);
+        console.log(accessToken, refreshToken);
+
+        // Guardar los tokens en el localStorage
+        localStorage.setItem('accessToken', accessToken);
+        localStorage.setItem('refreshToken', refreshToken);
 
         // Opcional: puedes mostrar el token en una alerta
-        // alert(`Token recibido: ${token}`);
+        // alert(`Access Token recibido: ${accessToken}`);
+        // alert(`Refresh Token recibido: ${refreshToken}`);
 
     } catch (error) {
-        console.error("Error al obtener la respuesta", error);
-        alert("Error al obtener la respuesta");
+        console.error("Error al enviar las credenciales", error);
+        alert("Error al enviar las credenciales");
     }
 }
 
@@ -39,38 +48,41 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!field.value) {
                 isValid = false;
                 field.classList.add("error");
-                if (errorMessage) { // Verificar si errorMessage no es null
+                if (errorMessage) {
                     errorMessage.textContent = "Este campo es obligatorio.";
-                    errorMessage.style.display = 'block'; // Mostrar el mensaje de error
+                    errorMessage.style.display = 'block';
                 }
             } else {
                 field.classList.remove("error");
-                if (errorMessage) { // Verificar si errorMessage no es null
-                    errorMessage.textContent = ""; // Restablecer el mensaje de error
-                    errorMessage.style.display = 'none'; // Ocultar el mensaje de error
+                if (errorMessage) {
+                    errorMessage.textContent = "";
+                    errorMessage.style.display = 'none';
                 }
             }
         });
 
         if (isValid) {
-            await obtenerRespuesta(); // Esperar a que se complete obtenerRespuesta
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Llamar a la función para enviar las credenciales
+            await enviarCredenciales(username, password);
         }
     });
 
-    // Mostrar el mensaje de error al salir del campo si está vacío
     contactForm.addEventListener('blur', (event) => {
         const field = event.target;
         const errorMessage = document.getElementById(field.id + '-error');
 
         if (!field.value) {
             field.classList.add('error');
-            if (errorMessage) { // Verificar si errorMessage no es null
-                errorMessage.style.display = 'block'; // Mostrar el mensaje de error
+            if (errorMessage) {
+                errorMessage.style.display = 'block';
             }
         } else {
             field.classList.remove('error');
-            if (errorMessage) { // Verificar si errorMessage no es null
-                errorMessage.style.display = 'none'; // Ocultar el mensaje de error
+            if (errorMessage) {
+                errorMessage.style.display = 'none';
             }
         }
     }, true);

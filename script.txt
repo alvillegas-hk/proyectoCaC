@@ -1,0 +1,92 @@
+-- Creación de la tabla users
+CREATE TABLE users (
+    user_id CHAR(36) PRIMARY KEY,
+    username VARCHAR(255) UNIQUE,
+    password VARCHAR(255),
+    role_id INTEGER,
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    lastModified TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Creación de la tabla users_accounts_relationship
+CREATE TABLE users_accounts_relationship (
+    us_as_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    user_id CHAR(36),
+    account_id INTEGER,
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (account_id) REFERENCES accounts(account_id)
+);
+
+-- Creación de la tabla roles
+CREATE TABLE roles (
+    role_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    description VARCHAR(255),
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+);
+
+-- Creación de la tabla accounts
+CREATE TABLE accounts (
+    account_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    person_id INTEGER,
+    type_id INTEGER,
+    balance DECIMAL(10,2),
+    accountState_id INTEGER,
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    lastModified TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (accountState_id) REFERENCES accountState(accountState_id),
+    FOREIGN KEY (person_id) REFERENCES people(person_id),
+    FOREIGN KEY (type_id) REFERENCES typeOperations(type_id)
+);
+
+-- Creación de la tabla typeOperations
+CREATE TABLE typeOperations (
+    type_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    market VARCHAR(255),
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+);
+
+-- Creación de la tabla accountState
+CREATE TABLE accountState (
+    accountState_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    state VARCHAR(255),
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+);
+
+-- Creación de la tabla people
+CREATE TABLE people (
+    person_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    firstName VARCHAR(255),
+    lastName VARCHAR(255),
+    typeDni VARCHAR(255),
+    dni VARCHAR(20),
+    birth DATE,
+    email VARCHAR(255),
+    phone VARCHAR(20),
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    lastModified TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+);
+
+-- Restricciones de clave externa (Foreign Key Constraints)
+ALTER TABLE users
+    ADD CONSTRAINT fk_users_roles
+    FOREIGN KEY (role_id) REFERENCES roles(role_id);
+
+ALTER TABLE users_accounts_relationship
+    ADD CONSTRAINT fk_us_ac_users
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    ADD CONSTRAINT fk_us_ac_accounts
+    FOREIGN KEY (account_id) REFERENCES accounts(account_id);
+
+ALTER TABLE accounts
+    ADD CONSTRAINT fk_accounts_people
+    FOREIGN KEY (person_id) REFERENCES people(person_id),
+    ADD CONSTRAINT fk_accounts_typeOperations
+    FOREIGN KEY (type_id) REFERENCES typeOperations(type_id),
+    ADD CONSTRAINT fk_accounts_accountState
+    FOREIGN KEY (accountState_id) REFERENCES accountState(accountState_id);
+
+
+
+
