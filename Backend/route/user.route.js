@@ -5,6 +5,9 @@ const verifyJWT = require('../middleware/verifyJWT');
 
 const registerRouter = express.Router();
 
-registerRouter.get('/', verifyJWT, userController.getAllUsers);
+registerRouter.get('/users', verifyJWT, userController.getAllUsers);
+registerRouter.put('/updateUser', userController.updateUser);
+
+
 
 module.exports = registerRouter;

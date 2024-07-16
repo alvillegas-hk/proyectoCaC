@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema</title>
+    <link rel="stylesheet" href="css/style-system.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <link rel="icon" href="favicon.png" type="image/png">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <picture>
+                    <img src="images/Ainvertir-logo.png" alt="Logo de la empresa">
+                </picture>
+            </div>
+            <h1>Bienvenido, <span id="username"></span></h1>
+            <div class="menu-icon" id="menu-icon">
+                &#9776;
+            </div>
+            <button class="button is-primary" id="logoutButton">Logout</button>
+        </nav>
+    </header>
+
+    <main>
+        <button id="refreshButton" class="button is-primary">Actualizar</button>
+        <table class="table is-fullwidth is-striped">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Role</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Birth</th>
+                    <th>Account ID</th>
+                    <th>Balance</th>
+                    <th>State</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="usersTableBody">
+                <!-- Rows will be added dynamically here -->
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Todos los derechos reservados Alfredo Villegas - Comision 24123</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/system.js"></script>
+</body>
+</html>
