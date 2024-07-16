@@ -6,8 +6,8 @@ const conexionMySQL = mysql.createPool({
     connectionLimit: 10,
     host: 'localhost',
     database: 'proyectCAC',
-    user: 'devws',
-    password: '!D7nmrnee5',
+    user: 'd3213',
+    password: '123',
     decimalNumbers: true
 });
 
